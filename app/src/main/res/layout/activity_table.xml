@@ -1,0 +1,76 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:id="@+id/table_wrapper"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:fitsSystemWindows="true"
+              android:orientation="vertical"
+              android:theme="@style/MyAppTheme">
+<!--
+    <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:minHeight="?attr/actionBarSize"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:titleTextColor="@android:color/white"
+            android:background="?attr/colorAccent">
+    </android.support.v7.widget.Toolbar>
+-->
+    <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                 android:id="@+id/table_header"
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:stretchColumns="1"
+                 android:background="?attr/colorPrimaryDark">
+        <TableRow android:layout_width="match_parent" android:layout_height="match_parent">
+            <TextView
+                    android:text="Adress"
+                    android:layout_width="0dp"
+                    android:layout_weight=".50"
+                    android:textSize="24sp"
+                    android:textColor="@color/colorTableHeader"
+                    android:padding="3dip"/>
+            <TextView
+                    android:text="Coordinates"
+                    android:layout_width="0dp"
+                    android:layout_weight=".50"
+                    android:textSize="24sp"
+                    android:textColor="@color/colorTableHeader"
+                    android:padding="3dip"/>
+        </TableRow>
+
+    </TableLayout>
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" android:id="@+id/table_content" android:visibility="visible">
+    </LinearLayout>
+    <!--
+    <TableLayout
+            android:id="@+id/table_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:stretchColumns="1">
+        <TableRow>
+            <TextView
+
+                    android:text="@string/table_layout_4_open"
+                    android:padding="3dip" />
+            <TextView
+                    android:text="@string/table_layout_4_open_shortcut"
+                    android:gravity="right"
+                    android:padding="3dip" />
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                    android:text="@string/table_layout_4_save"
+                    android:padding="3dip" />
+            <TextView
+                    android:text="@string/table_layout_4_save_shortcut"
+                    android:gravity="right"
+                    android:padding="3dip" />
+        </TableRow>
+    </TableLayout>
+-->
+</LinearLayout>

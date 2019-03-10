@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+            android:id="@+id/action_apply"
+            app:showAsAction="ifRoom|withText"
+            android:title="Открыть">
+    </item>
+    <item
+            android:id="@+id/action_edit_save"
+            app:showAsAction="ifRoom|withText"
+            android:title="Сохранить">
+    </item>
+    <item
+            android:id="@+id/action_share"
+            app:showAsAction="ifRoom|withText"
+            android:title="Отправить">
+    </item>
+    <item
+            android:id="@+id/action_delete"
+            app:showAsAction="ifRoom"
+            android:title="Удалить">
+    </item>
+    <item
+            android:id="@+id/action_cancel"
+            app:showAsAction="ifRoom"
+            android:title="Отмена">
+    </item>
+
+</menu>
