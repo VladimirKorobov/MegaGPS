@@ -298,7 +298,8 @@ public class MainActivity extends Activity { //AppCompatActivity {
                 // Get the URI that points to the selected contact
                 Uri contactUri = data.getData();
                 // We only need the NUMBER column, because there will be only one row in the result
-                String[] projection = {ContactsContract.CommonDataKinds.Phone.NUMBER};
+                String[] projection = {ContactsContract.CommonDataKinds.Phone.NUMBER,
+                        ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME};
 
                 // Perform the query on the contact to get the NUMBER column
                 // We don't need a selection or sort order (there's only one result for the given URI)
@@ -312,6 +313,8 @@ public class MainActivity extends Activity { //AppCompatActivity {
                 // Retrieve the phone number from the NUMBER column
                 int column = cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER);
                 final String number = cursor.getString(column);
+                column = cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME);
+                final String whom = cursor.getString(column);
 
                 if(gpsTracker.canGetLocation()) {
                     final Context This = this;
@@ -335,7 +338,7 @@ public class MainActivity extends Activity { //AppCompatActivity {
                         }
                     });
 
-                    dlg.show(sms, "Сохранить:");
+                    dlg.show(sms, "Отправить: " + whom);
                 }
             }
         }

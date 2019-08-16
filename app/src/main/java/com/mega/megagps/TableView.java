@@ -15,14 +15,14 @@ import java.util.List;
 
 public class TableView extends ScrollView {//} implements View.OnClickListener{
     private Context mContext;
-    private int headerColor = Color.GRAY;
-    private int headerStyle = Typeface.BOLD;
+    final int headerColor = Color.GRAY;
+    final int headerStyle = Typeface.BOLD;
     private int textColor = Color.BLACK;
-    private int bkColor = Color.WHITE;
-    private int textColorSel = Color.WHITE;
-    private int bkColorSel = Color.GRAY;
+    final int bkColor = Color.WHITE;
+    final int textColorSel = Color.WHITE;
+    final int bkColorSel = Color.GRAY;
 
-    private int textStyle = Typeface.NORMAL;
+    final int textStyle = Typeface.NORMAL;
     private float textSize;
 
     private float width;

@@ -1,5 +1,6 @@
 package com.mega.megagps;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -8,6 +9,7 @@ import android.util.TypedValue;
 import android.view.ContextThemeWrapper;
 import android.view.Gravity;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -77,10 +79,13 @@ public class EditAlertDialog extends AlertDialog.Builder{
         tableRow.setPadding(0, 0, 0, 2);
         tableRow.setLayoutParams(params);
 
+        float height = ((Activity)mContext).getWindow().getDecorView().getHeight();
+
         // Create text view for field name
         TextView textView = new TextView(mContext);
         textView.setText(name);
-        textView.setTextSize(TypedValue.COMPLEX_UNIT_PX, 30f);
+        //textView.setTextSize(TypedValue.COMPLEX_UNIT_PX, 30f);
+        textView.setTextSize(TypedValue.COMPLEX_UNIT_PX, height / 30.0f);
         textView.setBackgroundColor(Color.WHITE);
         textView.setTextColor(Color.GRAY);
         textView.setPadding(5, 0, 5, 2);
@@ -97,7 +102,8 @@ public class EditAlertDialog extends AlertDialog.Builder{
         EditText editText = new EditText(mContext);
         editText.setText(value);
         editText.setPadding(5, (int)(editText.getTextSize() / 2), 5, 2);
-        editText.setTextSize(TypedValue.COMPLEX_UNIT_PX, 30f);
+        //editText.setTextSize(TypedValue.COMPLEX_UNIT_PX, 30f);
+        editText.setTextSize(TypedValue.COMPLEX_UNIT_PX, height / 30.0f);
         editText.setBackgroundColor(Color.WHITE);
         editText.setTextColor(Color.BLACK);
 
