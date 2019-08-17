@@ -11,8 +11,6 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.*;
 
-import java.util.List;
-
 public class TableView extends ScrollView {//} implements View.OnClickListener{
     private Context mContext;
     final int headerColor = Color.GRAY;

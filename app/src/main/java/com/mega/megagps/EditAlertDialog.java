@@ -3,13 +3,12 @@ package com.mega.megagps;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.graphics.Color;
 import android.util.TypedValue;
 import android.view.ContextThemeWrapper;
 import android.view.Gravity;
+import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -36,12 +35,12 @@ public class EditAlertDialog extends AlertDialog.Builder{
     List<EditText> getTextEdits() {
         return list;
     }
-    public void show(String[] names, String[] values, float[] weights) {
+    public void show(String[] names, String[] values, float[] weights, int[] textTypes) {
 
         tableLayout = new TableLayout(mContext);
         list = new  ArrayList<EditText>();
         for(int i = 0; i < names.length; i ++) {
-            list.add(addtext(tableLayout, names[i], values[i], weights[i]));
+            list.add(addtext(tableLayout, names[i], values[i], weights[i], textTypes[i]));
         }
         this.setView(tableLayout);
         /*
@@ -67,7 +66,7 @@ public class EditAlertDialog extends AlertDialog.Builder{
         this.show();
     }
 
-    private EditText addtext(TableLayout layout, String name, String value, float weight) {
+    private EditText addtext(TableLayout layout, String name, String value, float weight, int textType) {
         TableRow tableRow = new TableRow(mContext);
         tableRow.setBackgroundColor(Color.BLACK);
 
@@ -106,6 +105,8 @@ public class EditAlertDialog extends AlertDialog.Builder{
         editText.setTextSize(TypedValue.COMPLEX_UNIT_PX, height / 30.0f);
         editText.setBackgroundColor(Color.WHITE);
         editText.setTextColor(Color.BLACK);
+        editText.setImeOptions(EditorInfo.IME_ACTION_GO);
+        editText.setInputType(textType);
 
         params = new TableRow.LayoutParams(
                 TableRow.LayoutParams.MATCH_PARENT,
@@ -113,7 +114,9 @@ public class EditAlertDialog extends AlertDialog.Builder{
                 1.f - weight);
 
         editText.setLayoutParams(params);
+
         tableRow.addView(editText);
+
 
         layout.addView(tableRow);
 

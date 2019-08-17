@@ -18,7 +18,9 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -169,6 +171,30 @@ public class SmsTracker{
         return list;
     }
 
+    public static void CopyFile(File src, File dst)
+    {
+        if(src.exists())
+        {
+            try {
+                InputStream in = new FileInputStream(src);
+                OutputStream out = new FileOutputStream(dst);
+                // Copy the bits from instream to outstream
+                byte[] buf = new byte[1024];
+                int len;
+
+                while ((len = in.read(buf)) > 0) {
+                    out.write(buf, 0, len);
+                }
+
+                in.close();
+                out.close();
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
     public static List<Sms> getSmsListFromFile(Activity activity) {
         File privateDir = activity.getFilesDir();
         File file = new File(privateDir, coordFileName);
@@ -178,9 +204,19 @@ public class SmsTracker{
             if(!file.exists()) {
                 file.createNewFile();
             }
+
+            // Test
+            /*
+            File downloadDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
+            File outFile = new File(downloadDir, coordFileName + ".txt");
+            CopyFile(file, outFile);
+            //CopyFile(outFile, file);
+            */
+
             if(file.exists()) {
                 FileInputStream is = new FileInputStream(file);
                 BufferedReader reader = new BufferedReader(new InputStreamReader(is));
+
 
                 for(;;) {
                     Sms sms = new Sms();
@@ -197,7 +233,8 @@ public class SmsTracker{
                         break;
                     }
                     try {
-                        sms.date = Long.parseLong(reader.readLine());
+                        String dateLine =  reader.readLine();
+                        sms.date = Long.parseLong(dateLine);
                         list.add(sms);
                     }
                     catch(Exception ex) {

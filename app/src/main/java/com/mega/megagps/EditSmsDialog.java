@@ -2,6 +2,7 @@ package com.mega.megagps;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.text.InputType;
 import android.view.ContextThemeWrapper;
 
 public class EditSmsDialog extends EditAlertDialog{
@@ -19,6 +20,10 @@ public class EditSmsDialog extends EditAlertDialog{
         String[] values = new String[]{parsedBody.place, Double.toString(parsedBody.lat),
                 Double.toString(parsedBody.lon)};
         float[] weights = new float[]{0.25f, 0.25f, 0.25f};
+        int[] textTypes = new int[] {
+                InputType.TYPE_CLASS_TEXT,
+                InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL,
+                InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL};
         this.setTitle(title);
 
         setNegativeButton("Отмена", new DialogInterface.OnClickListener(){
@@ -28,6 +33,6 @@ public class EditSmsDialog extends EditAlertDialog{
             }
         });
 
-        this.show(names, values, weights);
+        this.show(names, values, weights, textTypes);
     }
 }

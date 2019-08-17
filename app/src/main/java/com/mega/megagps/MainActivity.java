@@ -1,7 +1,6 @@
 package com.mega.megagps;
 
 import android.Manifest;
-import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
@@ -15,7 +14,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.style.RelativeSizeSpan;
@@ -79,6 +77,7 @@ public class MainActivity extends Activity { //AppCompatActivity {
         permissions.add(Manifest.permission.ACCESS_COARSE_LOCATION);
         permissions.add(Manifest.permission.READ_SMS);
         permissions.add(Manifest.permission.SEND_SMS);
+        permissions.add(Manifest.permission.WRITE_EXTERNAL_STORAGE);
 
         permissionsToRequest = new ArrayList<String>(permissions);
 
